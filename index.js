@@ -30,10 +30,10 @@ function onClick(evt) {
   if (!target.classList.contains("js-item") || target.textContent) {
     return;
   }
-
+  
   const id = Number(target.dataset.id);
   let result = false;
-const isEndGame = historyX.length + historyO.length === 9;
+
   if (player === "X") {
     historyX.push(id);
     result = isWinner(historyX);
@@ -42,14 +42,16 @@ const isEndGame = historyX.length + historyO.length === 9;
     result = isWinner(historyO);
   }
 
-   target.textContent = player;
+  target.textContent = player;
 
   if (result) {
+    console.log(`Winner ${player}!!!`);
     nameWinner.textContent = `Winner ${player}!!!`;
     resetGame();
     return;
-  } else if(isEndGame){
-    nameWinner.textContent = `Try again!!!`;
+  } else if (historyX.length + historyO.length === 9) {
+    console.log(`Try again!!!`);
+    nameWinner.textContent = "Try again!!!";
     resetGame();
     return;
   }
