@@ -45,12 +45,10 @@ function onClick(evt) {
   target.textContent = player;
 
   if (result) {
-    console.log(`Winner ${player}!!!`);
     nameWinner.textContent = `Winner ${player}!!!`;
     resetGame();
     return;
   } else if (historyX.length + historyO.length === 9) {
-    console.log(`Try again!!!`);
     nameWinner.textContent = "Try again!!!";
     resetGame();
     return;
